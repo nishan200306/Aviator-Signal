@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="si">
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Aviator Signal</title>
+  <title>ඒවියටර් සිග්නල්</title>
 
   <link rel="preconnect" href="https://cdn.simpleicons.org" crossorigin>
   <link rel="dns-prefetch" href="//cdn.simpleicons.org">
@@ -42,12 +42,9 @@
     body {
       font-family: 'Poppins', system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
       color: var(--text);
-      /* Body background also tinted red */
       background: radial-gradient(circle at 50% -10%, var(--bg-red-1) 0%, var(--bg-red-2) 70%);
       overflow: hidden;
     }
-
-    /* Brand header */
     .topbar {
       position: fixed; top: 0; left: 0; right: 0; z-index: 5;
       display: grid; place-items: center;
@@ -80,8 +77,6 @@
       white-space: nowrap;
       box-shadow: inset 0 0 10px rgba(40,231,122,.25), 0 0 10px rgba(40,231,122,.18);
     }
-
-    /* World (UI + bg) — now deep red */
     #world {
       position: relative; width: 100%; height: 100%;
       opacity: 0;
@@ -93,8 +88,6 @@
       clip-path: circle(150% at 50% 50%);
       background: radial-gradient(circle at 50% -10%, var(--bg-red-1) 0%, var(--bg-deep) 70%) fixed;
     }
-
-    /* Starfield (kept) + extra red glow overlay */
     #starfield { position: fixed; inset: 0; z-index: 0; }
     .overlay {
       position: fixed; inset: 0; z-index: 1; pointer-events: none;
@@ -103,8 +96,6 @@
         radial-gradient(60% 40% at 80% 80%, rgba(255,23,68,0.15), rgba(0,0,0,0));
       mix-blend-mode: screen;
     }
-
-    /* Screens */
     .app { position: relative; z-index: 2; height: 100%; padding-top: 92px; }
     .screen {
       position: absolute; inset: 92px 16px 16px 16px;
@@ -113,7 +104,6 @@
     }
     .screen.hidden { opacity: 0; transform: translateX(24px); visibility: hidden; pointer-events: none; }
     .screen.show   { opacity: 1; transform: translateX(0); visibility: visible; }
-
     .container {
       width: min(520px, 92vw);
       display: flex; flex-direction: column; gap: 18px; align-items: center;
@@ -123,18 +113,14 @@
       box-shadow: 0 0 28px 2px rgba(255,59,78,0.22), 0 0 60px 12px rgba(255,59,78,0.14);
       backdrop-filter: blur(4px);
     }
-
     .display { width: 100%; padding: 24px 18px; border-radius: 16px; background: rgba(255,59,78,0.06); border: 2px solid var(--card-border); box-shadow: 0 0 24px rgba(255,59,78,0.22), inset 0 0 24px rgba(255,59,78,0.08); text-align: center; user-select: none; }
     .odd { font-family: 'Orbitron', monospace; font-weight: 800; font-size: clamp(42px, 10vw, 64px); color: var(--red-1); letter-spacing: 1.5px; text-shadow: 0 0 22px rgba(255,82,82,0.6), 0 0 48px rgba(255,82,82,0.4); transition: transform .18s ease; }
     .odd.pop { transform: scale(1.06); }
-
     .btn { width: 100%; padding: 16px 18px; border-radius: 14px; border: none; color: #fff; background: var(--btn-bg); font-family: 'Orbitron', sans-serif; font-weight: 800; font-size: clamp(18px, 3.8vw, 24px); letter-spacing: 1.2px; cursor: pointer; box-shadow: 0 8px 24px rgba(255,59,78,0.35), 0 0 24px rgba(255,59,78,0.25); transition: transform .06s ease, filter .2s ease, background .2s ease; }
     .btn:hover { filter: brightness(1.06); }
     .btn:active { transform: translateY(1px) scale(0.995); }
-
     .tools { width: 100%; display: flex; gap: 10px; flex-wrap: wrap; }
     .small-btn { flex: 1; min-width: 120px; padding: 10px 12px; border-radius: 10px; border: 1px solid var(--card-border); background: rgba(255,59,78,0.08); color: #FFECEF; font-size: 13px; cursor: pointer; font-weight: 700; }
-
     .socials { display: flex; gap: 14px; margin-top: 6px; }
     .socials a { width: 46px; height: 46px; display: grid; place-items: center; border-radius: 50%; color: #fff; text-decoration: none; box-shadow: 0 0 14px rgba(255,59,78,0.2), 0 4px 12px rgba(0,0,0,0.35); }
     .socials img { width: 22px; height: 22px; display: block; }
@@ -142,15 +128,11 @@
     .socials a[data-brand="youtube"]  { background: var(--yt); }
     .socials a[data-brand="whatsapp"] { background: var(--wa); }
     .socials a[data-brand="telegram"] { background: var(--tg); }
-
     .history { width: 100%; display: grid; gap: 8px; }
     .history-row { display: flex; justify-content: space-between; font-family: 'Orbitron', monospace; font-size: 14px; opacity: 0.9; }
     .history-row .tag { padding: 4px 8px; background: rgba(255,59,78,0.08); border: 1px solid var(--card-border); border-radius: 8px; }
-
-    /* Connect */
     .backRow { width: 100%; display: flex; justify-content: space-between; align-items: center; }
     .linkBtn { background: transparent; border: 1px solid var(--card-border); color: var(--text); padding: 8px 12px; border-radius: 10px; cursor: pointer; font-weight: 700; }
-
     .connect-panel { width: 100%; display: grid; gap: 12px; }
     .field { display: grid; grid-template-columns: 130px 1fr; gap: 10px; align-items: center; }
     .field label { font-weight: 700; font-size: 13px; color: #ffd2d8; }
@@ -159,8 +141,6 @@
     .status { justify-self: start; padding: 8px 12px; border-radius: 10px; font-weight: 800; letter-spacing: .6px; display: none; }
     .status.ok  { display:inline-block; color: var(--ok);  background: rgba(40,231,122,0.12); border: 1.5px solid rgba(40,231,122,0.45); text-shadow: 0 0 8px rgba(40,231,122,0.25); }
     .status.bad { display:inline-block; color: var(--bad); background: rgba(255,90,90,0.12); border: 1.5px solid rgba(255,90,90,0.45); text-shadow: 0 0 8px rgba(255,90,90,0.25); }
-
-    /* Feedback */
     .feedWrap { width: 100%; display: grid; gap: 14px; }
     .feedList { list-style: none; margin: 0; padding: 0; display: grid; gap: 12px; }
     .feedItem { display: grid; gap: 6px; padding: 10px 12px; border-radius: 12px; background: rgba(255,59,78,0.06); border: 1.5px solid var(--card-border); }
@@ -169,17 +149,13 @@
     .avatar svg{ width: 22px; height: 22px; opacity: .95; filter: drop-shadow(0 0 6px rgba(0,0,0,0.15)); }
     .name { font-weight: 800; letter-spacing: .3px; }
     .msg { opacity: .95; line-height: 1.45; white-space: pre-line; }
-
     .sendBox { display: grid; gap: 10px; padding: 12px; border-radius: 12px; background: rgba(255,59,78,0.06); border: 1.5px solid var(--card-border); }
     .sendBox .row2 { display: grid; gap: 10px; }
     .sendBox input, .sendBox textarea { background: rgba(255,255,255,0.05); border: 1.5px solid var(--card-border); color: var(--text); padding: 10px 12px; border-radius: 10px; outline: none; font-family: 'Poppins', system-ui, sans-serif; }
     .sendBox textarea { min-height: 80px; resize: vertical; }
     .sendBox .actions { display: flex; gap: 10px; align-items: center; }
     .note { font-size: 12px; opacity: .8; }
-
     .hidden { display: none !important; }
-
-    /* Intro overlay + deep red bg + odds rain (now red) */
     #intro {
       position: fixed; inset: 0; z-index: 10; display: grid; place-items: center;
       background:
@@ -188,83 +164,69 @@
     }
     #intro.show { opacity: 1; visibility: visible; }
     #introOdd { position: absolute; inset: 0; z-index: 0; }
-
     .skipIntro { position: absolute; top: 14px; right: 14px; z-index: 3; padding: 6px 10px; border-radius: 10px; border: 1px solid var(--card-border); background: rgba(255,255,255,0.06); color: var(--text); font-weight: 800; cursor: pointer; }
     .badge { position: relative; z-index: 2; width: 180px; height: 180px; border-radius: 50%; display: grid; place-items: center; background: radial-gradient(circle at 50% 50%, rgba(255,23,68,0.24), rgba(255,59,78,0.08)); border: 2px solid rgba(255,59,78,0.35); box-shadow: 0 0 32px rgba(255,59,78,0.35), inset 0 0 36px rgba(255,59,78,0.22); animation: popIn .45s ease both; overflow: visible; }
     .ring { position: absolute; inset: -16px; border-radius: 50%; border: 2px solid transparent; }
     .ring.r1 { border-top-color: var(--red-1); border-left-color: var(--red-1); animation: spin 2.6s linear infinite; }
     .ring.r2 { inset: -32px; border-bottom-color: var(--red-2); border-right-color: var(--red-2); animation: spin 3.6s linear infinite reverse; opacity: .75; }
     .ring.r3 { inset: -52px; border-top-color: rgba(255,59,78,.55); animation: spin 5.2s linear infinite; opacity: .55; }
-
-    /* Center icon: paper-plane SVG in solid red (no white) */
     .aviator { width: 90px; height: 90px; color: var(--red-1); filter: drop-shadow(0 0 12px rgba(255,59,78,0.6)); }
-
-    /* Bottom loader */
     .bottomLoad { position: absolute; left: 24px; right: 24px; bottom: 26px; display: grid; gap: 8px; z-index: 2; }
     .loadBar { width: 100%; height: 10px; border-radius: 999px; overflow: hidden; background: rgba(255,255,255,0.08); border: 1px solid rgba(255,255,255,0.16); box-shadow: inset 0 0 8px rgba(0,0,0,0.45), 0 0 16px rgba(255,59,78,0.25); }
     .loadFill { height: 100%; width: 1%; background: linear-gradient(90deg, #ff1744, #ff6a6a); box-shadow: 0 0 18px rgba(255,59,78,0.55); border-right: 2px solid rgba(255,255,255,0.45); transition: width .06s linear; }
     .loadLabel { justify-self: end; font-family: 'Orbitron', monospace; font-weight: 900; font-size: 12px; color: #ffdbe0; text-shadow: 0 0 10px rgba(255,59,78,0.45); letter-spacing: 1px; }
-
     @keyframes spin { to { transform: rotate(360deg); } }
     @keyframes popIn { from { transform: scale(.9); opacity: 0; } to { transform: scale(1); opacity: 1; } }
   </style>
 </head>
 <body>
 
-  <!-- Intro overlay with red background + odds rain -->
   <div id="intro" aria-modal="true" role="dialog">
     <canvas id="introOdd"></canvas>
-    <button class="skipIntro" id="skipIntro">Skip ✕</button>
+    <button class="skipIntro" id="skipIntro">මඟ හරින්න ✕</button>
 
     <div class="badge">
       <div class="ring r1"></div>
       <div class="ring r2"></div>
       <div class="ring r3"></div>
-
-      <!-- Solid red aviator icon -->
       <svg class="aviator" viewBox="0 0 64 64" fill="currentColor" aria-hidden="true">
         <path d="M58 6 6 28l16 6 4 18 8-13 18 12 6-45z"></path>
       </svg>
     </div>
 
-    <!-- Bottom loader -->
     <div class="bottomLoad">
       <div class="loadBar"><div class="loadFill" id="barFill"></div></div>
       <div class="loadLabel"><span id="barPct">1%</span></div>
     </div>
   </div>
 
-  <!-- World (revealed after intro) -->
   <div id="world">
     <canvas id="starfield" aria-hidden="true"></canvas>
     <div class="overlay" aria-hidden="true"></div>
 
     <header class="topbar">
-      <h1 class="brand">Aviator Signal</h1>
+      <h1 class="brand">ඒවියටර් සිග්නල්</h1>
       <div class="subtag">
-        this hack works only with this promo code
+        මෙම හැක් එක වැඩ කරන්නේ
         <span class="promoCode">VIPCNA</span>
+        කෝඩ් එකට විතරයි
       </div>
     </header>
 
     <main class="app" role="main">
-      <!-- Home -->
       <section id="home" class="screen show">
         <div class="container">
           <div class="display" aria-live="polite">
             <div id="odd" class="odd">x0.00</div>
           </div>
-          <button id="generate" class="btn">GENERATE</button>
-
+          <button id="generate" class="btn">ජනනය කරන්න</button>
           <div class="tools">
-            <button id="connectBtn" class="small-btn">Connect</button>
-            <button id="feedbackBtn" class="small-btn">Customer Feedback</button>
-            <button id="clearBtn" class="small-btn">Clear History</button>
+            <button id="connectBtn" class="small-btn">සම්බන්ධ වන්න</button>
+            <button id="feedbackBtn" class="small-btn">පාරිභෝගික ප්‍රතිචාර</button>
+            <button id="clearBtn" class="small-btn">ඉතිහාසය හිස් කරන්න</button>
           </div>
-
-          <div id="history" class="history" aria-label="Recent values"></div>
-
-          <div class="socials" aria-label="Social links">
+          <div id="history" class="history" aria-label="මෑත අගයන්"></div>
+          <div class="socials" aria-label="සමාජ ජාලා">
             <a class="open-tg" data-brand="facebook" href="#" aria-label="Facebook">
               <img alt="Facebook" src="https://cdn.simpleicons.org/facebook/FFFFFF" width="22" height="22">
             </a>
@@ -281,48 +243,42 @@
         </div>
       </section>
 
-      <!-- Connect -->
       <section id="connect" class="screen hidden" aria-label="Connect to system">
         <div class="container">
           <div class="backRow" style="width:100%">
-            <button id="backHome" class="linkBtn">← Back</button>
-            <div style="opacity:.8;font-size:13px">Secure connect</div>
+            <button id="backHome" class="linkBtn">← ආපසු</button>
+            <div style="opacity:.8;font-size:13px">සුරක්ෂිත සම්බන්ධතාව</div>
           </div>
-
           <div class="connect-panel">
             <div class="field">
-              <label for="gameId">Your Game ID</label>
-              <input id="gameId" type="text" placeholder="Enter your game id" autocomplete="username">
+              <label for="gameId">ඔබේ ගේම් ID</label>
+              <input id="gameId" type="text" placeholder="ඔබේ ගේම් ID එක ඇතුලත් කරන්න" autocomplete="username">
             </div>
             <div class="field">
-              <label for="pwd">Password</label>
-              <input id="pwd" type="password" placeholder="password" value="" autocomplete="current-password">
+              <label for="pwd">මුරපදය</label>
+              <input id="pwd" type="password" placeholder="මුරපදය" value="" autocomplete="current-password">
             </div>
-
-            <button id="sysConnect" class="sysBtn">System Connect</button>
+            <button id="sysConnect" class="sysBtn">පද්ධතියට සම්බන්ධ වන්න</button>
             <div id="connStatus" class="status" aria-live="polite"></div>
           </div>
         </div>
       </section>
 
-      <!-- Feedback -->
       <section id="feedback" class="screen hidden" aria-label="Customer feedback">
         <div class="container">
           <div class="backRow" style="width:100%">
-            <button id="backFromFeedback" class="linkBtn">← Back</button>
-            <div style="opacity:.8;font-size:13px">Customer feedback</div>
+            <button id="backFromFeedback" class="linkBtn">← ආපසු</button>
+            <div style="opacity:.8;font-size:13px">පාරිභෝගික ප්‍රතිචාර</div>
           </div>
-
           <div class="feedWrap">
             <ul id="feedList" class="feedList"></ul>
-
             <div class="sendBox">
               <div class="row2">
-                <input id="fbName" placeholder="Your name (optional)">
-                <textarea id="fbText" placeholder="Type your feedback..."></textarea>
+                <input id="fbName" placeholder="ඔබේ නම (අනිවාර්ය නොවේ)">
+                <textarea id="fbText" placeholder="ඔබේ අදහස මෙහි ලියන්න..."></textarea>
               </div>
               <div class="actions">
-                <button id="fbSend" class="sysBtn">Send</button>
+                <button id="fbSend" class="sysBtn">යවන්න</button>
                 <div id="fbNote" class="note"></div>
               </div>
             </div>
@@ -398,7 +354,6 @@
         requestAnimationFrame(step);
       }
       
-      // --- Odds Rain Animation (Intro) ---
       const octx = oddCanvas.getContext('2d', { alpha: true });
       let oWidth = 0, oHeight = 0, oDpr = 1, rainCols = [], rainRAF = 0;
       const ROW_H = 24, COL_W = 110, FADE_ALPHA = 0.16;
@@ -418,7 +373,7 @@
           rainCols.push({
             x: Math.floor((i + 0.1 + Math.random() * 0.8) * COL_W),
             y: -Math.random() * 200, vy: 120 + Math.random() * 180,
-            nextY: 0, text: generateRandomOddString()
+            nextY: 0, text: formatOdd(generateOddUnderFour())
           });
         }
         octx.font = "bold 18px 'Orbitron', monospace";
@@ -433,7 +388,7 @@
         for (const col of rainCols) {
           col.y += col.vy * dt;
           if (col.y - col.nextY >= ROW_H) {
-            col.text = generateRandomOddString();
+            col.text = formatOdd(generateOddUnderFour());
             col.nextY = col.y;
           }
           octx.fillStyle = 'rgba(255,59,78,0.92)';
@@ -444,7 +399,7 @@
             col.y = -Math.random() * 200;
             col.nextY = col.y;
             col.vy = 120 + Math.random() * 180;
-            col.text = generateRandomOddString();
+            col.text = formatOdd(generateOddUnderFour());
           }
         }
       }
@@ -469,23 +424,18 @@
 
       // --- Main App: Odds Generation & History ---
       const history = [];
-      const scriptedOdds = [118.52, 1.00, 5.02, 1.57];
-      let scriptIndex = 0;
       const formatOdd = (n) => 'x' + n.toFixed(2);
       
-      function generateRandomOdd() {
-        const r = Math.random();
-        let v;
-        if (r < 0.70) v = 1.00 + Math.random() * 1.00;
-        else if (r < 0.90) v = 2.00 + Math.random() * 3.00;
-        else v = 5.00 + Math.random() * 20.00;
+      // <<< ඔබ ඉල්ලා සිටි වෙනස මෙතන සිදුකර ඇත: 4ට අඩු අගයක් ජනනය කිරීම >>>
+      function generateOddUnderFour() {
+        // Generates a random number between 1.00 and 3.99
+        const v = 1.00 + Math.random() * 3.00; 
         return Math.round(v * 100) / 100;
       }
 
-      function generateRandomOddString() { return formatOdd(generateRandomOdd()); }
-
       function handleGenerateClick() {
-        const v = (scriptIndex < scriptedOdds.length) ? scriptedOdds[scriptIndex++] : generateRandomOdd();
+        // Now it always calls the new random function
+        const v = generateOddUnderFour();
         oddEl.textContent = formatOdd(v);
         oddEl.classList.add('pop');
         setTimeout(() => oddEl.classList.remove('pop'), 160);
@@ -500,7 +450,7 @@
 
       function renderHistory() {
         historyEl.innerHTML = history.map(h => {
-          const t = h.at.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit', second: '2-digit' });
+          const t = h.at.toLocaleTimeString('si-LK', { hour: '2-digit', minute: '2-digit', second: '2-digit' });
           return `<div class="history-row"><span>${t}</span><span class="tag">${formatOdd(h.val)}</span></div>`;
         }).join('');
       }
@@ -519,33 +469,28 @@
       // --- Connect Screen Logic (Fake) ---
       function handleSystemConnect() {
         const isOk = pwdInput.value.trim().toLowerCase() === 'vipcna';
-        connStatus.textContent = isOk ? 'System Connected' : 'System Disconnected';
+        connStatus.textContent = isOk ? 'පද්ධතියට සම්බන්ධයි' : 'සම්බන්ධතාව අසාර්ථකයි';
         connStatus.className = 'status ' + (isOk ? 'ok' : 'bad');
       }
 
       // --- Social Links ---
       function handleSocialLink(e) {
         e.preventDefault();
-        // <<< ඔබ ඉල්ලා සිටි Telegram username වෙනස මෙතන සිදුකර ඇත >>>
-        const TG_USER = 'virat1xbet'; 
+        const TG_USER = 'virat1xbet';
         const deepLink = `tg://resolve?domain=${TG_USER}`;
         const webLink = `https://t.me/${TG_USER}`;
-        // Try opening the deep link first.
-        // For security, some browsers block this. A timeout fallback to the web link is a common pattern.
         window.location.href = deepLink;
         setTimeout(() => {
-            // If the user is still on the page after a short time, they likely don't have Telegram installed.
-            // Open the web link in a new tab.
             window.open(webLink, '_blank', 'noopener,noreferrer');
         }, 500);
       }
       
       // --- Feedback Screen Logic (Fake) ---
       const INITIAL_FEEDS = [
-        { name: 'Dulan Chamika', msg: `This is amazing, 100% sure signals! 🔥\nAfter creating a new 1XBET account with the VIPCNA code,\nthe signals started working perfectly for me. 💸🤩❤️`, },
-        { name: 'Dilshan Jayavardana', msg: 'The best signals, really amazing!' },
-        { name: 'Jane Perera', msg: 'I was down by 800k, but I recovered my entire loss in just three days thanks to this app. Truly grateful!' },
-        { name: 'Wasantha Jayathilake', msg: 'Thanks Brother, Aviator Signal is awesome! ❤️' },
+        { name: 'Dulan Chamika', msg: `අඩේ මරු අයියෙ මේක නම් 100% sure signal 🔥\nVIPCNA කෝඩ් එකෙන් අලුත් 1XBET account \nඑකක් හදා ගත්තට පස්සෙ තමා \nsignal සුපිරියටම වැඩ කරේ 💸🤩❤️`, },
+        { name: 'Dilshan Jayavardana', msg: 'Signal nam Signal Supiri Ahh' },
+        { name: 'ජානකී හේරත්', msg: 'ලක්ෂ 8 ක් ලොස් වෙලා හිටියෙ , දවස් තුනෙක් කවර් කරා මේ ඇප් එක නිසා මුළු loss එකම , ඇත්තටම ගොඩක් ස්තුතී' },
+        { name: 'වසන්ත ජයතිලක', msg: 'Thank Brother Aviator Signal මරු ❤️' },
       ];
       const AV_COLORS = ['#e53935','#d81b60','#8e24aa','#3949ab','#1e88e5','#00897b','#7cb342','#f9a825','#ef6c00'];
       const PERSON_SVG = `<svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 12a5 5 0 1 0 0-10 5 5 0 0 0 0 10zm0 2c-4.4 0-8 2.2-8 5v1h16v-1c0-2.8-3.6-5-8-5z"/></svg>`;
@@ -577,13 +522,13 @@
         const name = (fbNameInput.value.trim() || 'Anonymous');
         const text = fbTextInput.value.trim();
         if (!text) {
-          fbNote.textContent = 'Please type your feedback first.';
+          fbNote.textContent = 'කරුණාකර පළමුව ඔබේ අදහස ලියන්න.';
           return;
         }
         feedList.prepend(createFeedItem(name, text));
         fbTextInput.value = '';
         fbNameInput.value = '';
-        fbNote.textContent = 'Sent ✓';
+        fbNote.textContent = 'යවන ලදී ✓';
         setTimeout(() => fbNote.textContent = '', 1200);
       }
 
