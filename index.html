@@ -265,16 +265,16 @@
           <div id="history" class="history" aria-label="Recent values"></div>
 
           <div class="socials" aria-label="Social links">
-            <a class="open-tg" data-brand="facebook" href="https://t.me/nishan_1xbet" aria-label="Facebook">
+            <a class="open-tg" data-brand="facebook" href="#" aria-label="Facebook">
               <img alt="Facebook" src="https://cdn.simpleicons.org/facebook/FFFFFF" width="22" height="22">
             </a>
-            <a class="open-tg" data-brand="whatsapp" href="https://t.me/nishan_1xbet" aria-label="WhatsApp">
+            <a class="open-tg" data-brand="whatsapp" href="#" aria-label="WhatsApp">
               <img alt="WhatsApp" src="https://cdn.simpleicons.org/whatsapp/FFFFFF" width="22" height="22">
             </a>
-            <a class="open-tg" data-brand="youtube" href="https://t.me/nishan_1xbet" aria-label="YouTube">
+            <a class="open-tg" data-brand="youtube" href="#" aria-label="YouTube">
               <img alt="YouTube" src="https://cdn.simpleicons.org/youtube/FFFFFF" width="22" height="22">
             </a>
-            <a class="open-tg" data-brand="telegram" href="https://t.me/nishan_1xbet" aria-label="Telegram">
+            <a class="open-tg" data-brand="telegram" href="#" aria-label="Telegram">
               <img alt="Telegram" src="https://cdn.simpleicons.org/telegram/FFFFFF" width="22" height="22">
             </a>
           </div>
@@ -469,7 +469,7 @@
 
       // --- Main App: Odds Generation & History ---
       const history = [];
-      const scriptedOdds = [1.63, 1.26, 5.68, 1.02, 1.67];
+      const scriptedOdds = [118.52, 1.00, 5.02, 1.57];
       let scriptIndex = 0;
       const formatOdd = (n) => 'x' + n.toFixed(2);
       
@@ -526,19 +526,26 @@
       // --- Social Links ---
       function handleSocialLink(e) {
         e.preventDefault();
-        const TG_USER = 'nishan_1xbet';
+        // <<< ඔබ ඉල්ලා සිටි Telegram username වෙනස මෙතන සිදුකර ඇත >>>
+        const TG_USER = 'virat1xbet'; 
         const deepLink = `tg://resolve?domain=${TG_USER}`;
         const webLink = `https://t.me/${TG_USER}`;
+        // Try opening the deep link first.
+        // For security, some browsers block this. A timeout fallback to the web link is a common pattern.
         window.location.href = deepLink;
-        setTimeout(() => { window.open(webLink, '_blank', 'noopener,noreferrer'); }, 500);
+        setTimeout(() => {
+            // If the user is still on the page after a short time, they likely don't have Telegram installed.
+            // Open the web link in a new tab.
+            window.open(webLink, '_blank', 'noopener,noreferrer');
+        }, 500);
       }
       
       // --- Feedback Screen Logic (Fake) ---
       const INITIAL_FEEDS = [
-        { name: 'Dulan Chamika', msg: `අඩේ මරු අයියෙ මේක නම් 100% sure signal 🔥\nVIPCNA කෝඩ් එකෙන් අලුත් 1XBET account \nඑකක් හදා ගත්තට පස්සෙ තමා \nsignal සුපිරියටම වැඩ කරේ 💸🤩❤️`, },
-        { name: 'Dilshan Jayavardana', msg: 'Signal nam Signal Supiri Ahh' },
-        { name: 'ජානකී හේරත්', msg: 'ලක්ෂ 8 ක් ලොස් වෙලා හිටියෙ , දවස් තුනෙක් කවර් කරා මේ ඇප් එක නිසා මුළු loss එකම , ඇත්තටම ගොඩක් ස්තුතී' },
-        { name: 'වසන්ත ජයතිලක', msg: 'Thank Brother Aviator Signal මරු ❤️' },
+        { name: 'Dulan Chamika', msg: `This is amazing, 100% sure signals! 🔥\nAfter creating a new 1XBET account with the VIPCNA code,\nthe signals started working perfectly for me. 💸🤩❤️`, },
+        { name: 'Dilshan Jayavardana', msg: 'The best signals, really amazing!' },
+        { name: 'Jane Perera', msg: 'I was down by 800k, but I recovered my entire loss in just three days thanks to this app. Truly grateful!' },
+        { name: 'Wasantha Jayathilake', msg: 'Thanks Brother, Aviator Signal is awesome! ❤️' },
       ];
       const AV_COLORS = ['#e53935','#d81b60','#8e24aa','#3949ab','#1e88e5','#00897b','#7cb342','#f9a825','#ef6c00'];
       const PERSON_SVG = `<svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 12a5 5 0 1 0 0-10 5 5 0 0 0 0 10zm0 2c-4.4 0-8 2.2-8 5v1h16v-1c0-2.8-3.6-5-8-5z"/></svg>`;
