@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html lang="si">
+<html lang="en">
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>ඒවියටර් සිග්නල්</title>
+  <title>Aviator Signal</title>
 
   <link rel="preconnect" href="https://cdn.simpleicons.org" crossorigin>
   <link rel="dns-prefetch" href="//cdn.simpleicons.org">
@@ -183,8 +183,7 @@
 
   <div id="intro" aria-modal="true" role="dialog">
     <canvas id="introOdd"></canvas>
-    <button class="skipIntro" id="skipIntro">මඟ හරින්න ✕</button>
-
+    <button class="skipIntro" id="skipIntro">Skip ✕</button>
     <div class="badge">
       <div class="ring r1"></div>
       <div class="ring r2"></div>
@@ -193,7 +192,6 @@
         <path d="M58 6 6 28l16 6 4 18 8-13 18 12 6-45z"></path>
       </svg>
     </div>
-
     <div class="bottomLoad">
       <div class="loadBar"><div class="loadFill" id="barFill"></div></div>
       <div class="loadLabel"><span id="barPct">1%</span></div>
@@ -205,11 +203,10 @@
     <div class="overlay" aria-hidden="true"></div>
 
     <header class="topbar">
-      <h1 class="brand">ඒවියටර් සිග්නල්</h1>
+      <h1 class="brand">Aviator Signal</h1>
       <div class="subtag">
-        මෙම හැක් එක වැඩ කරන්නේ
+        This hack works only with this promo code
         <span class="promoCode">VIPCNA</span>
-        කෝඩ් එකට විතරයි
       </div>
     </header>
 
@@ -219,14 +216,14 @@
           <div class="display" aria-live="polite">
             <div id="odd" class="odd">x0.00</div>
           </div>
-          <button id="generate" class="btn">ජනනය කරන්න</button>
+          <button id="generate" class="btn">GENERATE</button>
           <div class="tools">
-            <button id="connectBtn" class="small-btn">සම්බන්ධ වන්න</button>
-            <button id="feedbackBtn" class="small-btn">පාරිභෝගික ප්‍රතිචාර</button>
-            <button id="clearBtn" class="small-btn">ඉතිහාසය හිස් කරන්න</button>
+            <button id="connectBtn" class="small-btn">Connect</button>
+            <button id="feedbackBtn" class="small-btn">Customer Feedback</button>
+            <button id="clearBtn" class="small-btn">Clear History</button>
           </div>
-          <div id="history" class="history" aria-label="මෑත අගයන්"></div>
-          <div class="socials" aria-label="සමාජ ජාලා">
+          <div id="history" class="history" aria-label="Recent values"></div>
+          <div class="socials" aria-label="Social links">
             <a class="open-tg" data-brand="facebook" href="#" aria-label="Facebook">
               <img alt="Facebook" src="https://cdn.simpleicons.org/facebook/FFFFFF" width="22" height="22">
             </a>
@@ -246,19 +243,19 @@
       <section id="connect" class="screen hidden" aria-label="Connect to system">
         <div class="container">
           <div class="backRow" style="width:100%">
-            <button id="backHome" class="linkBtn">← ආපසු</button>
-            <div style="opacity:.8;font-size:13px">සුරක්ෂිත සම්බන්ධතාව</div>
+            <button id="backHome" class="linkBtn">← Back</button>
+            <div style="opacity:.8;font-size:13px">Secure Connect</div>
           </div>
           <div class="connect-panel">
             <div class="field">
-              <label for="gameId">ඔබේ ගේම් ID</label>
-              <input id="gameId" type="text" placeholder="ඔබේ ගේම් ID එක ඇතුලත් කරන්න" autocomplete="username">
+              <label for="gameId">Your Game ID</label>
+              <input id="gameId" type="text" placeholder="Enter your game ID" autocomplete="username">
             </div>
             <div class="field">
-              <label for="pwd">මුරපදය</label>
-              <input id="pwd" type="password" placeholder="මුරපදය" value="" autocomplete="current-password">
+              <label for="pwd">Password</label>
+              <input id="pwd" type="password" placeholder="Password" value="" autocomplete="current-password">
             </div>
-            <button id="sysConnect" class="sysBtn">පද්ධතියට සම්බන්ධ වන්න</button>
+            <button id="sysConnect" class="sysBtn">System Connect</button>
             <div id="connStatus" class="status" aria-live="polite"></div>
           </div>
         </div>
@@ -292,7 +289,6 @@
     (function() {
       'use strict';
 
-      // --- DOM Element Selectors ---
       const intro = document.getElementById('intro');
       const skipIntro = document.getElementById('skipIntro');
       const world = document.getElementById('world');
@@ -321,8 +317,7 @@
       const fbSendBtn = document.getElementById('fbSend');
       const fbNote = document.getElementById('fbNote');
 
-      // --- Intro & Loading Screen ---
-      const INTRO_TIME = 2200; // ms
+      const INTRO_TIME = 2200;
       let introDone = false;
 
       function openIntro() {
@@ -384,7 +379,6 @@
       function stepOddsRain(dt) {
         octx.fillStyle = `rgba(20,0,6,${FADE_ALPHA})`;
         octx.fillRect(0, 0, oWidth, oHeight);
-
         for (const col of rainCols) {
           col.y += col.vy * dt;
           if (col.y - col.nextY >= ROW_H) {
@@ -394,7 +388,6 @@
           octx.fillStyle = 'rgba(255,59,78,0.92)';
           octx.shadowBlur = 10;
           octx.fillText(col.text, col.x, col.y);
-
           if (col.y > oHeight + ROW_H) {
             col.y = -Math.random() * 200;
             col.nextY = col.y;
@@ -416,25 +409,22 @@
         rainRAF = requestAnimationFrame(loop);
         window.addEventListener('resize', resizeOddsRain);
       }
+
       function stopOddsRain() {
         cancelAnimationFrame(rainRAF);
         window.removeEventListener('resize', resizeOddsRain);
         octx.clearRect(0, 0, oWidth, oHeight);
       }
 
-      // --- Main App: Odds Generation & History ---
       const history = [];
       const formatOdd = (n) => 'x' + n.toFixed(2);
       
-      // <<< ඔබ ඉල්ලා සිටි වෙනස මෙතන සිදුකර ඇත: 4ට අඩු අගයක් ජනනය කිරීම >>>
       function generateOddUnderFour() {
-        // Generates a random number between 1.00 and 3.99
-        const v = 1.00 + Math.random() * 3.00; 
+        const v = 1.00 + Math.random() * 3.00;
         return Math.round(v * 100) / 100;
       }
 
       function handleGenerateClick() {
-        // Now it always calls the new random function
         const v = generateOddUnderFour();
         oddEl.textContent = formatOdd(v);
         oddEl.classList.add('pop');
@@ -450,12 +440,11 @@
 
       function renderHistory() {
         historyEl.innerHTML = history.map(h => {
-          const t = h.at.toLocaleTimeString('si-LK', { hour: '2-digit', minute: '2-digit', second: '2-digit' });
+          const t = h.at.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit', second: '2-digit' });
           return `<div class="history-row"><span>${t}</span><span class="tag">${formatOdd(h.val)}</span></div>`;
         }).join('');
       }
 
-      // --- Main App: Screen Navigation ---
       function showScreen(name) {
         const screens = { home: homeScr, connect: connectScr, feedback: feedbackScr };
         Object.keys(screens).forEach(key => {
@@ -466,14 +455,12 @@
         if (name === 'feedback') setTimeout(() => fbTextInput.focus(), 80);
       }
 
-      // --- Connect Screen Logic (Fake) ---
       function handleSystemConnect() {
         const isOk = pwdInput.value.trim().toLowerCase() === 'vipcna';
-        connStatus.textContent = isOk ? 'පද්ධතියට සම්බන්ධයි' : 'සම්බන්ධතාව අසාර්ථකයි';
+        connStatus.textContent = isOk ? 'System Connected' : 'System Disconnected';
         connStatus.className = 'status ' + (isOk ? 'ok' : 'bad');
       }
 
-      // --- Social Links ---
       function handleSocialLink(e) {
         e.preventDefault();
         const TG_USER = 'virat1xbet';
@@ -485,7 +472,7 @@
         }, 500);
       }
       
-      // --- Feedback Screen Logic (Fake) ---
+      // <<< ඔබ ඉල්ලා සිටි පරිදි, Feedback කොටස සිංහලෙන් සකස් කර ඇත >>>
       const INITIAL_FEEDS = [
         { name: 'Dulan Chamika', msg: `අඩේ මරු අයියෙ මේක නම් 100% sure signal 🔥\nVIPCNA කෝඩ් එකෙන් අලුත් 1XBET account \nඑකක් හදා ගත්තට පස්සෙ තමා \nsignal සුපිරියටම වැඩ කරේ 💸🤩❤️`, },
         { name: 'Dilshan Jayavardana', msg: 'Signal nam Signal Supiri Ahh' },
@@ -501,7 +488,6 @@
       function createFeedItem(name, message) {
         let h=0; for (let i=0;i<name.length;i++){ h = (h*31 + name.charCodeAt(i))>>>0; }
         const color = AV_COLORS[h % AV_COLORS.length];
-        
         const li = document.createElement('li');
         li.className = 'feedItem';
         li.innerHTML = `
@@ -532,7 +518,6 @@
         setTimeout(() => fbNote.textContent = '', 1200);
       }
 
-      // --- Background Starfield Animation ---
       const sctx = starfieldCanvas.getContext('2d', { alpha: true });
       let stars = [], sWidth = 0, sHeight = 0, sDpr = 1;
 
@@ -576,9 +561,7 @@
         requestAnimationFrame(animateStarfield);
       }
 
-      // --- Initialization ---
       function init() {
-        // Event Listeners
         window.addEventListener('load', openIntro);
         window.addEventListener('resize', resizeStarfield);
         skipIntro.addEventListener('click', () => {
@@ -594,7 +577,6 @@
         fbSendBtn.addEventListener('click', handleSendFeedback);
         document.querySelectorAll('.open-tg').forEach(a => a.addEventListener('click', handleSocialLink));
         
-        // Initial Renders
         renderInitialFeeds();
         resizeStarfield();
         requestAnimationFrame(animateStarfield);
